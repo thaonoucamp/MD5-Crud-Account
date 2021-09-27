@@ -1,0 +1,120 @@
+<div class="container" align="center">
+  <h1>Account list</h1>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCreate">
+    Create
+  </button>
+  <!--  <button type="button" class="btn-primary" (click)="save()">Create</button>-->
+  <table class="container-fluid">
+    <tr align="center">
+      <th>#</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let acc of accounts" align="center">
+      <td>{{acc.id}}</td>
+      <td>{{acc.username}}</td>
+      <td>{{acc.password}}</td>
+      <td>
+        <button type="button" class="btn btn-primary" data-toggle="modal" (click)="showFormEdit(acc)"
+                data-target="#exampleModalEdit">
+          Edit
+        </button>
+      </td>
+      <td>
+        <button type="button" (click)="delete(acc.id)" class="btn btn-dark">Delete</button>
+      </td>
+    </tr>
+  </table>
+  <!-- Modal Create-->
+  <div class="modal fade" id="exampleModalCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabelCreate">Create new Account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" align="left">
+          <form [formGroup]="accountForm">
+            <table>
+              <tr>
+                <td>Id</td>
+                <td><input formControlName="id">
+                  <p *ngIf="!accountForm.get('id')?.valid && accountForm.get('id')?.touched" style="color: red">Id phai
+                    lon hon 0</p>
+                </td>
+              </tr>
+              <tr>
+                <td>Username</td>
+                <td><input formControlName="username">
+                  <p *ngIf="!accountForm.get('username')?.valid && accountForm.get('username')?.touched"
+                     style="color: red">Name chu thuong a den z- so tu 0 den 9 - toi thieu 3 ky tu</p>
+                </td>
+              </tr>
+              <tr>
+                <td>Password</td>
+                <td>
+                  <input formControlName="password" type="password">
+                  <p *ngIf="!accountForm.get('password')?.valid && accountForm.get('password')?.touched"
+                     style="color: red">Password chu thuong a den z - so tu 0 den 9 - toi thieu 6 ky tu</p>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button"
+                  [disabled]="accountForm.invalid"
+                  (click)="save()" class="btn btn-primary" data-dismiss="modal">Save
+          </button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  Modal Edit
+  <div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabelEdit">Create new Product</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="accountForm">
+            <label>Id :</label>
+            <input formControlName="id">
+            <p *ngIf="!accountForm.get('id')?.valid && accountForm.get('id')?.touched" style="color: red">Id phai lon
+              hon 0 !</p>
+            <br>
+            <label>Username :</label>
+            <input formControlName="username">
+            <p *ngIf="!accountForm.get('username')?.valid && accountForm.get('username')?.touched" style="color: red">
+              Name chu thuong a den z + so tu 0 den 9 - toi thieu 3 ky tu !</p>
+            <br>
+            <label>Password :</label>
+            <input formControlName="password">
+            <p *ngIf="!accountForm.get('password')?.valid && accountForm.get('password')?.touched" style="color: red">
+              Password chu thuong a den z + so tu 0 den 9 - toi thieu 6 ky tu !</p>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button"
+                  [disabled]="accountForm.invalid"
+                  (click)="submitEdit()" class="btn btn-primary" data-dismiss="modal">Save
+          </button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
