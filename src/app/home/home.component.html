@@ -18,8 +18,7 @@
       <td>{{acc.username}}</td>
       <td>{{acc.password}}</td>
       <td>
-        <button type="button" class="btn btn-primary" data-toggle="modal" (click)="showFormEdit(acc)"
-                data-target="#exampleModalEdit">
+        <button type="button" class="btn btn-primary" data-toggle="modal" (click)="showFormEdit(acc.id)" data-target="#exampleModalEdit">
           Edit
         </button>
       </td>
@@ -45,23 +44,20 @@
               <tr>
                 <td>Id</td>
                 <td><input formControlName="id">
-                  <p *ngIf="!accountForm.get('id')?.valid && accountForm.get('id')?.touched" style="color: red">Id phai
-                    lon hon 0</p>
+                  <p *ngIf="!accountForm.get('id')?.valid && accountForm.get('id')?.touched" style="color: red">Id phai lon hon 0</p>
                 </td>
               </tr>
               <tr>
                 <td>Username</td>
                 <td><input formControlName="username">
-                  <p *ngIf="!accountForm.get('username')?.valid && accountForm.get('username')?.touched"
-                     style="color: red">Name chu thuong a den z- so tu 0 den 9 - toi thieu 3 ky tu</p>
+                  <p *ngIf="!accountForm.get('username')?.valid && accountForm.get('username')?.touched" style="color: red">Name chu thuong a den z- so tu 0 den 9 - toi thieu 3 ky tu</p>
                 </td>
               </tr>
               <tr>
                 <td>Password</td>
                 <td>
                   <input formControlName="password" type="password">
-                  <p *ngIf="!accountForm.get('password')?.valid && accountForm.get('password')?.touched"
-                     style="color: red">Password chu thuong a den z - so tu 0 den 9 - toi thieu 6 ky tu</p>
+                  <p *ngIf="!accountForm.get('password')?.valid && accountForm.get('password')?.touched" style="color: red">Password chu thuong a den z - so tu 0 den 9 - toi thieu 6 ky tu</p>
                 </td>
               </tr>
             </table>
@@ -91,20 +87,27 @@
         </div>
         <div class="modal-body">
           <form [formGroup]="accountForm">
-            <label>Id :</label>
-            <input formControlName="id">
-            <p *ngIf="!accountForm.get('id')?.valid && accountForm.get('id')?.touched" style="color: red">Id phai lon
-              hon 0 !</p>
-            <br>
-            <label>Username :</label>
-            <input formControlName="username">
-            <p *ngIf="!accountForm.get('username')?.valid && accountForm.get('username')?.touched" style="color: red">
-              Name chu thuong a den z + so tu 0 den 9 - toi thieu 3 ky tu !</p>
-            <br>
-            <label>Password :</label>
-            <input formControlName="password">
-            <p *ngIf="!accountForm.get('password')?.valid && accountForm.get('password')?.touched" style="color: red">
-              Password chu thuong a den z + so tu 0 den 9 - toi thieu 6 ky tu !</p>
+            <table>
+              <tr>
+                <td>Id</td>
+                <td><input formControlName="id" readonly>
+                  <p *ngIf="!accountForm.get('id')?.valid && accountForm.get('id')?.touched" style="color: red">Id phai lon hon 0</p>
+                </td>
+              </tr>
+              <tr>
+                <td>Username</td>
+                <td><input formControlName="username">
+                  <p *ngIf="!accountForm.get('username')?.valid && accountForm.get('username')?.touched" style="color: red">Name chu thuong a den z- so tu 0 den 9 - toi thieu 3 ky tu</p>
+                </td>
+              </tr>
+              <tr>
+                <td>Password</td>
+                <td>
+                  <input formControlName="password" type="password">
+                  <p *ngIf="!accountForm.get('password')?.valid && accountForm.get('password')?.touched" style="color: red">Password chu thuong a den z - so tu 0 den 9 - toi thieu 6 ky tu</p>
+                </td>
+              </tr>
+            </table>
           </form>
         </div>
         <div class="modal-footer">

@@ -9,26 +9,7 @@ import {Account} from "./model/account";
 export class AppComponent {
   accounts: Account[] = [];
 
-  id!: number;
-  username!: string;
-  password!: string;
-
   constructor() {
-    this.accounts.push({
-      id: 1,
-      username: 'admin',
-      password: '123456',
-    });
-    this.accounts.push({
-      id: 2,
-      username: 'user',
-      password: '123456',
-    });
-    this.accounts.push({
-      id: 3,
-      username: 'guest',
-      password: '123456',
-    });
   }
 
   delete(id: number) {
